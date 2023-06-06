@@ -26,7 +26,7 @@ export default function Home() {
     return <Spinner />;
   } else {
     return (
-      <div className=" min-h-screen">
+      <div className="w-full">
         <Head>
           <title>WEATHER APP</title>
         </Head>
@@ -42,7 +42,7 @@ export default function Home() {
         />
 
         <div className="relative flex justify-between items-center  max-w-[500px] mx-auto p-4 text-white  z-10 ">
-          <div className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl">
+          <form onSubmit={fetchWeather} className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl">
             <div>
               <input
                 onChange={(e) => setCity(e.target.value)}
@@ -51,13 +51,15 @@ export default function Home() {
                 placeholder="Search City"
               />
             </div>
-            <button disabled={!city.trim()} onClick={fetchWeather}>
+            <button type="submit" disabled={!city.trim()} onClick={fetchWeather}>
               <BsSearch size={20} />
             </button>
-          </div>
+          </form>
         </div>
-
-        {weather && <Weather data={weather} />}
+        
+        <div className="relative">
+         {weather.main && <Weather data={weather} />} 
+        </div>
       </div>
     );
   }
