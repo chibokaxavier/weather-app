@@ -2,21 +2,23 @@ import Image from "next/image";
 import React from "react";
 
 const Weather = ({ data }) => {
-  console.log(data);
   return (
-    <div>
-      <div>
-        <div>
+    <div className=" flex flex-col justify-between max-w-[500px] h-[90vh] text-gray-300 z-10 w-full m-auto p-4 ">
+      <div className="relative flex justify-between pt-12">
+        <div className="flex flex-col items-center">
           <Image
             src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
             alt="/"
             width={100}
             height={100}
           />
-          <p>{data.weather[0].main}</p>
+          <p className="text-2xl">{data.weather[0].main}</p>
         </div>
-        <p>{data.main.temp.toFixed(0)}</p>
+        <p className="text-9xl">{data.main.temp.toFixed(0)}&#176;</p>
       </div>
+
+
+      
     </div>
   );
 };
